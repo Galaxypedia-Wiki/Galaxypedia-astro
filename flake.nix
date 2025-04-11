@@ -20,10 +20,7 @@
             devshell.overlays.default
           ];
         };
-        # Read and parse package.json
         pkg = builtins.fromJSON (builtins.readFile ./package.json);
-
-        # Create a function that formats a command using the key and its value.
         makeCommand = key: {
           name = "pnpm " + key;
           command = ''
@@ -33,11 +30,7 @@
           help = pkg.scripts.${key};
           category = "scripts";
         };
-
-        # Get all the script keys
         scriptNames = builtins.attrNames pkg.scripts;
-
-        # Map over the keys to generate the list of command attributes.
         commandsFromScripts = builtins.map makeCommand scriptNames;
       in
       {
