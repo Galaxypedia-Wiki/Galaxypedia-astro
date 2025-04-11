@@ -1,0 +1,95 @@
+@import "tailwindcss";
+@import "./components/markdown.css";
+
+@theme {
+    --color-orange-300: #f56642;
+    --color-blue-100: #427bf5;
+    --color-gray-50: #f8fafc;
+    --color-gray-100: #f1f5f9;
+    --color-gray-200: #e2e8f0;
+    --color-green-800: #3f6212;
+    --color-green-900: #365314;
+    --color-green-950: #1a2e05;
+}
+
+:root {
+    --color-bg: #000;
+    --color-bg2: #111;
+    --color-bg3: #222;
+    --color-bg4: #333;
+    --color-bg5: #444;
+}
+
+body {
+    @apply antialiased text-white;
+    background-color: var(--color-bg);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @apply mt-3 mb-1;
+}
+
+.content {
+    @apply w-10/12 p-4 mx-auto my-4 border rounded-lg;
+    background-color: var(--color-bg2);
+    border-color: var(--color-bg4);
+    animation: fadeIn 1s cubic-bezier(0.22, 1, 0.36, 1) forwards 250ms;
+}
+
+@keyframes fadeIn {
+    from {
+        box-shadow: 0 0 0px var(--color-bg4);
+    }
+    to {
+        box-shadow: 0 0 30px var(--color-bg4);
+    }
+}
+
+/* Custom Font Loading */
+@font-face {
+    font-family: "Rocket Rinder";
+    src: url("/fonts/Rocket Rinder.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "OriginTech";
+    src: url("/fonts/OriginTech personal use.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Ethno Centric";
+    src: url("/fonts/ethnocentric rg.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Star Jedi";
+    src: url("/fonts/Starjedi.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Android";
+    src: url("/fonts/Android/Android.ttf") format("truetype");
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Android";
+    src: url("/fonts/Android/Android Italic.ttf") format("truetype");
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Android Hollow";
+    src: url("/fonts/Android/Android Hollow.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Olga";
+    src: url("/fonts/Olga.ttf") format("truetype");
+}
+

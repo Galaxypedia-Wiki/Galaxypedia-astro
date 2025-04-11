@@ -1,0 +1,102 @@
+
+.markdown {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    @apply font-sans tracking-tight;
+  }
+
+  h1 {
+    @apply text-3xl font-bold;
+  }
+
+  h2 {
+    @apply text-2xl font-bold;
+  }
+
+  h3 {
+    @apply text-xl font-bold;
+  }
+
+  h4 {
+    @apply text-lg font-bold;
+  }
+
+  h5 {
+    @apply text-base font-bold;
+  }
+
+  h6 {
+    @apply text-sm font-bold;
+  }
+
+  p + h2,
+  p + h3,
+  ul + h2,
+  ul + h3,
+  ol + h2,
+  ol + h3 {
+    @apply mt-6;
+  }
+
+  h2 + h3 {
+    @apply mt-2;
+  }
+
+  p {
+    @apply mt-2 text-base leading-relaxed;
+  }
+
+  a {
+    @apply text-blue-300 underline;
+  }
+
+  a:hover {
+    @apply text-blue-800;
+  }
+
+  ul {
+    @apply pl-4 mt-2 list-disc;
+  }
+
+  ol {
+    @apply pl-4 mt-2 list-decimal;
+  }
+
+  li:not(:last-child) {
+    @apply mb-2;
+  }
+
+  blockquote {
+    @apply pl-3 mt-6 mb-8 border-l-2 border-gray-200;
+  }
+
+  .highlight {
+    @apply my-2;
+
+    pre {
+      @apply p-4 m-0 text-sm;
+
+      code {
+        @apply bg-none p-0;
+      }
+    }
+  }
+
+  pre:has(code) {
+    @apply p-2 m-4 overflow-x-auto bg-gray-700 rounded-lg;
+  }
+
+  pre {
+    code {
+      @apply bg-inherit font-mono text-sm;
+    }
+  }
+
+  code {
+    @apply px-1 text-gray-400 rounded-md;
+    background-color: var(--color-bg3);
+  }
+}
