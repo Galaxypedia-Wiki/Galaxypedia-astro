@@ -1,0 +1,7 @@
+* @galaxypedia-wiki/development-team
+
+flake.* @cswimr
+.envrc @cswimr
+devshell.toml @cswimr
+
+src/wiki/ @galaxypedia-wiki/staff
