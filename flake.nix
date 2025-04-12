@@ -48,9 +48,7 @@
                 package = nodejs_23;
                 name = "node";
               }
-              {
-                package = pnpm;
-              }
+              { package = pnpm; }
             ]
             ++ commandsFromScripts;
 
