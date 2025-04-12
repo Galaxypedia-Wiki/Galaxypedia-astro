@@ -28,13 +28,19 @@
             pnpm ${key}
           '';
           help = pkg.scripts.${key};
-          category = "scripts";
+          category = "[scripts]";
         };
         scriptNames = builtins.attrNames pkg.scripts;
         commandsFromScripts = builtins.map makeCommand scriptNames;
       in
       {
         devShells.default = pkgs.devshell.mkShell {
+          devshell = {
+            name = "Astropedia";
+            startup = {
+              install-pnpm-dependencies.text = "pnpm install --frozen-lockfile";
+            };
+          };
           commands =
             with pkgs;
             [
