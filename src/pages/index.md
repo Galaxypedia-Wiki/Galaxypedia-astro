@@ -13,9 +13,9 @@ layout: "../layouts/Layout.astro"
 <div class="flex-initial hover:scale-125 transition-all border border-black transform-gpu will-change-transform cursor-pointer">
 <a href="/wiki/ships">Ships</a>
 </div>
-<div class="flex-initial self-auto border border-black">
+<a class="flex-initial self-auto border border-black" href="./wiki/Weapons/Turrets">
 Turrets
-</div>
+</a>
 <div class="border border-black">
 Materials
 </div>

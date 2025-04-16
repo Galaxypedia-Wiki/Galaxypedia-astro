@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+// Build a list of unique category directories from your wiki collection.
+export async function getStaticPaths() {
+    const wiki = await getCollection('wiki');
+    const categories = new Set<string>();
+
+    wiki.forEach((article) => {
+        // Split the article id by "/" and remove the filename.
+        const parts = article.id.split('/');
+        parts.pop();
+        if (parts.length > 0) {
+            categories.add(parts.join('/'));
+        }
+    });
+
+    return Array.from(categories).map((category) => ({
+        // Pass the category parts as a parameter array for the catch-all route.
+        params: { category: category.split('/') },
+        props: { category }
+    }));
+}
+
+// Get the current category from the route props.
+const { category } = Astro.props;
+
+// Retrieve all articles from the wiki collection.
+const wiki = await getCollection('wiki');
+
+// Filter articles whose directory (extracted from the id) matches the current category.
+const articles = wiki.filter((article) => {
+    const parts = article.id.split('/');
+    parts.pop();
+    return parts.join('/') === category;
+});
+---
+<Layout title={`Category: ${category}`}>
+    <h1>Category: {category}</h1>
+    <ul>
+        {articles.map((article) => (
+                <li>
+                    <a href={`/wiki/${article.id}`}>{article.data.title}</a>
+                </li>
+        ))}
+    </ul>
+</Layout>

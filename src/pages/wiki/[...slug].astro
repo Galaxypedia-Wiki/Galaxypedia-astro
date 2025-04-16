@@ -10,12 +10,12 @@ export async function getStaticPaths() {
         props: article,
     }));
 }
-type Props = CollectionEntry<'wiki'>;
 
+type Props = CollectionEntry<'wiki'>;
 const article = Astro.props;
 const { Content } = await render(article);
 ---
 
-<Layout>
+<Layout {...article.data}>
     <Content />
 </Layout>

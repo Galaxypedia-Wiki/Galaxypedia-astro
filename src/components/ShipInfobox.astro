@@ -1,0 +1,120 @@
+---
+import type { CollectionEntry } from "astro:content";
+type Props = CollectionEntry<'wiki'>['data'];
+const { title } = Astro.props;
+import { Image } from 'astro:assets';
+
+const shipInfo: JSON = await (await fetch("https://api.info.galaxy.casa/api/v2/galaxypedia")).json();
+const entries = Object.entries(shipInfo);
+let shipData = entries.find(([key, value]) => key === title)?.[1];
+
+shipData = {
+    ...shipData,
+    ...Astro.props,
+};
+const idk = import.meta.glob("/**/ship-icon.webp")
+const relevantImages = Object.entries(idk).filter(([key]) => key.includes(title));
+---
+<div
+        class="shipinfobox sm:w-2/5 w-11/12 sm:max-w-80 max-w-full mr-0 ml-3 mb-3 sm:float-right border border-solid rounded-xl p-2.5 box-border text-white overflow-hidden sm:left-0 left-1/2 relative sm:static -translate-x-2/4 sm:translate-x-0 flex-col flex"
+        data-pagefind-ignore
+>
+    <h2 class="infoboxtitle !my-4">The {title}</h2>
+
+    <Image src={relevantImages[0][1]()} alt="Ship icon" />
+
+    <h3 class="!my-2">Health</h3>
+    <div class="infobox-row">
+        <p><b>Shield:</b> {shipData.shields}</p>
+        <p><b>Hull:</b> {shipData.hull}</p>
+    </div>
+    <p><b>Shield Regeneration Rate:</b> {shipData.shield_regen_rate}</p>
+
+    <h3 class="!my-2">Manuverability</h3>
+    <div class="infobox-row">
+        <p><b>Top Speed:</b> {shipData.top_speed}</p>
+        <p><b>Acceleration:</b> {shipData.acceleration}</p>
+    </div>
+    <p class="text-center"><b>Turn Speed:</b> {shipData.turn_speed}</p>
+
+    <h3 class="!my-2">Armament</h3>
+    <p><b>Tiny Turrets:</b> {shipData.tiny_turrets}</p>
+    <p><b>Small Turrets:</b> {shipData.small_turrets}</p>
+    <p><b>Med. Turrets:</b> {shipData.medium_turrets}</p>
+    <p><b>Large Turrets:</b> {shipData.large_turrets}</p>
+    <p><b>Huge Turrets:</b> {shipData.huge_turrets}</p>
+    <p><b>(F) Spinal:</b> {shipData.spinal_1}</p>
+    <p><b>(G) Spinal:</b> {shipData.spinal_2}</p>
+    <p><b>Average Turret DPS:</b> {shipData.turret_dps}</p>
+    <p><b>Average Spinal DPS:</b> {shipData.spinal_dps}</p>
+    <p><b>Max Turret Range:</b> {shipData.m_class_range}</p>
+    <p><b>Recom. Turret Range:</b> {shipData.r_class_range}</p>
+    <p><b>Mining Lasers:</b> {shipData.mining_lasers}</p>
+    <p><b>Mining Range:</b> {shipData.mining_range}</p>
+    <p><b>Fighters:</b> {shipData.fighters}</p>
+
+    <h3 class="!my-2">Misc</h3>
+    <p><b>Description:</b> {shipData.description}</p>
+    <p><b>Creator:</b> {shipData.creator}</p>
+    <p><b>Version Added:</b> {shipData.version_added}</p>
+    <p><b>Date Added:</b> {shipData.date_added}</p>
+    <p><b>Related Events:</b> {shipData.related_events}</p>
+    <p><b>VIP Required:</b> {shipData.vip_required}</p>
+</div>
+
+<script>
+    // Remove parameters that have no value
+    // TODO: This doesn't get rid of headers that have no content
+    // Extra TODO: We can probably use JSX above instead of doing this
+    document.querySelectorAll(".shipinfobox p").forEach(function (p) {
+        if (p.textContent?.includes(":")) {
+            var value = p.textContent.split(":")[1].trim();
+            if (value === "") {
+                p.remove();
+            }
+        }
+    });
+</script>
+
+<style>
+.shipinfobox h3 {
+    text-align: center;
+    font-family: "Ethno Centric" !important;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    }
+
+.shipinfobox {
+    background-color: var(--color-bg3);
+    border-color: var(--color-bg4);
+    box-shadow: 0 0 5px 0 var(--color-bg4);
+    }
+
+.shipinfobox p {
+    padding: 5px 10px;
+    background-color: var(--color-bg4);
+    border: 1px solid black;
+    margin: 0 0 -1px -1px;
+    word-break: break-word;
+    hyphens: auto;
+    }
+
+.infobox-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: stretch;
+    }
+
+.infobox-row p {
+    flex: 1;
+    word-break: break-word;
+    }
+
+.infoboxtitle {
+    font-family: "Rocket Rinder" !important;
+    text-align: center;
+    letter-spacing: 0.01em !important;
+    }
+</style>

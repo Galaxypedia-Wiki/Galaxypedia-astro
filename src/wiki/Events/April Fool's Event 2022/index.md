@@ -13,5 +13,3 @@ The **April Fool's Event 2022** ran from about March 31^st^, 2022, 6PM GMT to Ap
 Later on in the event, Pirate Waspinators began to spawn, which attacked players using a huge mining laser and several [Wasp?]({{< ref "/wiki/" >}}Wasp?) AI fighters. The ship also had a considerable blast radius somewhere over 7k studs, which reportedly lead to the instant destruction of a player's MRLS Launcher Launcher.
 
 During this event, [rcouret]({{< ref "/wiki/" >}}rcouret) and admins were given permission to spawn a custom, massive fleet of enemy AIs and other deadly ships, eventually causing the server to be ended when an [Eradicator]({{< ref "/wiki/" >}}Eradicator) was spawned.
-
-<File:1-4-22> Alien Swarm.png|An alien swarm spawned by admins <File:1-4-22> Alien Swarm 2.png|Another photo of the swarm <File:1-4-22> Eradicator.png|An Eradicator that was spawned before the server crashed <File:1-4-22> Pirate Swarm.png|A massive pirate fleet with Dragoons, Waspinators, and Kodiaks. <File:1-4-22> Wreckage.png.png|A large amount of wreckage after a swarm was destroyed.
